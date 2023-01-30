@@ -9,72 +9,276 @@
   <body>
     <header>
       <nav id="navbar">
-        <header>NavBar Header</header>
+        <header>Media Query Docs</header>
         <ul>
           <li>
-            <a href="#header1" class="nav-link" accesskey="1">Header 1</a>
+            <a href="#header1" class="nav-link" accesskey="1"
+              >Using media queries</a
+            >
           </li>
           <li>
-            <a href="#header2" class="nav-link" accesskey="2">Header 2</a>
+            <a href="#header2" class="nav-link" accesskey="2">Syntax</a>
           </li>
           <li>
-            <a href="#header3" class="nav-link" accesskey="3">Header 3</a>
+            <a href="#header3" class="nav-link" accesskey="3"
+              >Targeting media types</a
+            >
           </li>
           <li>
-            <a href="#header4" class="nav-link" accesskey="4">Header 4</a>
+            <a href="#header4" class="nav-link" accesskey="4"
+              >Targeting media features</a
+            >
           </li>
           <li>
-            <a href="#header5" class="nav-link" accesskey="5">Header 5</a>
+            <a href="#header5" class="nav-link" accesskey="5"
+              >Creating complex media queries</a
+            >
+          </li>
+          <li>
+            <a href="#header6" class="nav-link" accesskey="6"
+              >Syntax improvements in Level 4</a
+            >
+          </li>
+          <li>
+            <a href="#footer" class="nav-link" accesskey="7">References</a>
           </li>
         </ul>
       </nav>
     </header>
     <main id="main-doc">
       <section class="main-section" id="header1">
-        <header>Header1</header>
+        <h1>Using media queries</h1>
         <code></code>
-        <p></p>
         <p>
-          <li></li>
-          <li></li>
+          Media queries allow you to apply CSS styles depending on a device's
+          general type (such as print vs. screen) or other characteristics such
+          as screen resolution or browser viewport width. Media queries are used
+          for the following:
+        </p>
+        <p>
+          <li>
+            To conditionally apply styles with the CSS @media and @import
+            at-rules.
+          </li>
+          <li>
+            To target specific media for the style, link, source, and other HTML
+            elements with the media= attribute.
+          </li>
+          <li>
+            To test and monitor media states using the Window.matchMedia() and
+            MediaQueryList.addListener() JavaScript methods.
+          </li>
         </p>
       </section>
       <section class="main-section" id="header2">
-        <header>Header2</header>
+        <h1>Syntax</h1>
         <code></code>
-        <p></p>
         <p>
-          <li></li>
-          <li></li>
+          A media query is composed of an optional media type and any number of
+          media feature expressions, which may optionally be combined in various
+          ways using logical operators. Media queries are case-insensitive.
+        </p>
+        <p>
+          <li>
+            Media types define the broad category of device for which the media
+            query applies: all, print, screen. The type is optional (assumed to
+            be all) except when using the not or only logical operators.
+          </li>
+          <li>
+            Media features describe a specific characteristic of the user agent,
+            output device, or environment
+          </li>
+          <li>
+            For example, the hover feature allows a query to test against
+            whether the device supports hovering over elements. Media feature
+            expressions test for their presence or value, and are entirely
+            optional. Each media feature expression must be surrounded by
+            parentheses.
+          </li>
+          <li>
+            Logical operators can be used to compose a complex media query: not,
+            and, and only. You can also combine multiple media queries into a
+            single rule by separating them with commas.
+          </li>
+        </p>
+        <p>
+          A media query computes to true when the media type (if specified)
+          matches the device on which a document is being displayed and all
+          media feature expressions compute as true. Queries involving unknown
+          media types are always false.
         </p>
       </section>
       <section class="main-section" id="header3">
-        <header>Header3</header>
-        <code></code>
-        <p></p>
+        <h1>Targeting media types</h1>
         <p>
-          <li></li>
-          <li></li>
+          Media types describe the general category of a given device. Although
+          websites are commonly designed with screens in mind, you may want to
+          create styles that target special devices such as printers or
+          audio-based screen readers. For example, this CSS targets printers:
+        </p>
+        <code>@media print { /* … */ } </code>
+        <p>
+          You can also target multiple devices. For instance, this @media rule
+          uses two media queries to target both screen and print devices:
+        </p>
+        <code>@media screen, print { /* … */ } </code>
+        <p>
+          See media type for a list of all media types. Because they describe
+          devices in only very broad terms, just a few are available; to target
+          more specific attributes, use media features instead.
         </p>
       </section>
       <section class="main-section" id="header4">
-        <header>Header4</header>
-        <code></code>
-        <p></p>
+        <h1>Targeting media features</h1>
         <p>
-          <li></li>
-          <li></li>
+          Media features describe the specific characteristics of a given user
+          agent, output device, or environment. For instance, you can apply
+          specific styles to widescreen monitors, computers that use mice, or to
+          devices that are being used in low-light conditions. This example
+          applies styles when the user's primary input mechanism (such as a
+          mouse) can hover over elements:
+        </p>
+        <code>@media (hover: hover) { /* … */ } </code>
+        <p>
+          Many media features are range features, which means they can be
+          prefixed with "min-" or "max-" to express "minimum condition" or
+          "maximum condition" constraints. For example, this CSS will apply
+          styles only if your browser's viewport width is equal to or narrower
+          than 1250px:
+        </p>
+        <code>@media (max-width: 1250px) { /* … */ } </code>
+        <p>
+          If you create a media feature query without specifying a value, the
+          nested styles will be used as long as the feature's value is not zero
+          (or none, in Level 4). For example, this CSS will apply to any device
+          with a color screen:
+        </p>
+        <code>@media (color) { /* … */ } </code>
+        <p>
+          If a feature doesn't apply to the device on which the browser is
+          running, expressions involving that media feature are always false.
+          For more Media feature examples, please see the reference page for
+          each specific feature.
         </p>
       </section>
       <section class="main-section" id="header5">
-        <header>Header5</header>
-        <code></code>
-        <p></p>
+        <h1>Creating complex media queries</h1>
         <p>
-          <li></li>
-          <li></li>
+          Sometimes you may want to create a media query that depends on
+          multiple conditions. This is where the logical operators come in: not,
+          and, and only. Furthermore, you can combine multiple media queries
+          into a comma-separated list; this allows you to apply the same styles
+          in different situations.
+        </p>
+        <p>
+          In the previous example, we've already seen the and operator used to
+          group a media type with a media feature. The and operator can also
+          combine multiple media features into a single media query. The not
+          operator, meanwhile, negates a media query, basically reversing its
+          normal meaning. The only operator prevents older browsers from
+          applying the styles.
+        </p>
+        <h2>Combining multiple types of features</h2>
+        <p>
+          The and keyword combines a media feature with a media type or other
+          media features. This example combines two media features to restrict
+          styles to landscape-oriented devices with a width of at least 30 ems:
+        </p>
+        <code
+          >@media (min-width: 30em) and (orientation: landscape) { /* … */ }
+        </code>
+        <p>
+          To limit the styles to devices with a screen, you can chain the media
+          features to the screen media type:
+        </p>
+        <code
+          >@media screen and (min-width: 30em) and (orientation: landscape) { /*
+          … */ }
+        </code>
+        <h2>Testing for multiple queries</h2>
+        <p>
+          You can use a comma-separated list to apply styles when the user's
+          device matches any one of various media types, features, or states.
+          For instance, the following rule will apply its styles if the user's
+          device has either a minimum height of 680px or is a screen device in
+          portrait mode:
+        </p>
+        <code
+          >@media (min-height: 680px), screen and (orientation: portrait) { /* …
+          */ }
+        </code>
+        <p>
+          Taking the above example, if the user had a printer with a page height
+          of 800px, the media statement would return true because the first
+          query would apply. Likewise, if the user were on a smartphone in
+          portrait mode with a viewport height of 480px, the second query would
+          apply and the media statement would still return true.
+        </p>
+        <h2>Inverting a query's meaning</h2>
+        <p>
+          The not keyword inverts the meaning of an entire media query. It will
+          only negate the specific media query it is applied to. (Thus, it will
+          not apply to every media query in a comma-separated list of media
+          queries.) The not keyword can't be used to negate an individual
+          feature query, only an entire media query. The not is evaluated last
+          in the following query:
+        </p>
+        <code>@media not all and (monochrome) { /* … */ } </code>
+        <p>This means that the above query is evaluated like this:</p>
+        <code>@media not (all and (monochrome)) { /* … */ } </code>
+        <h2>Improving compatability with older browsers</h2>
+        <p>
+          The only keyword prevents older browsers that do not support media
+          queries with media features from applying the given styles. It has no
+          effect on modern browsers.
         </p>
       </section>
+      <section class="main-section" id="header6">
+        <h1>Syntax improvements in Level 4</h1>
+        <p>
+          The Media Queries Level 4 specification includes some syntax
+          improvements to make media queries using features that have a "range"
+          type, for example width or height, less verbose. Level 4 adds a range
+          context for writing such queries. For example, using the max-
+          functionality for width we might write the following:
+        </p>
+        <code>@media (max-width: 30em) { /* … */ } </code>
+        <p>In Media Queries Level 4 this can be written as:</p>
+        <code>@media (max-width: 30em) { /* … */ } </code>
+        <p>
+          Using min- and max- we might test for a width between two values like
+          so:
+        </p>
+        <code>@media (min-width: 30em) and (max-width: 50em) { /* … */ } </code>
+        <p>This would convert to the Level 4 syntax as:</p>
+        <code>@media (30em <= width <= 50em) { /* … */ } </code>
+        <p>
+          Media Queries Level 4 also adds ways to combine media queries using
+          full boolean algebra with and, not, and or.
+        </p>
+        <h2>Negating a feature with not</h2>
+        <p>
+          Using not() around a media feature negates that feature in the query.
+          For example, not(hover) would match if the device had no hover
+          capability:
+        </p>
+        <code>@media (not(hover)) { /* … */ } </code>
+        <h2>Testing for multiple features or</h2>
+        <p>
+          You can use or to test for a match among more than one feature,
+          resolving to true if any of the features are true. For example, the
+          following query tests for devices that have a monochrome display or
+          hover capability:
+        </p>
+        <code>@media (not (color)) or (hover) { /* … */ } </code>
+      </section>
     </main>
+    <footer id="footer">
+      All content on this page is sourced from
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
+        >MDN web docs</a
+      >
+    </footer>
   </body>
 </html>
