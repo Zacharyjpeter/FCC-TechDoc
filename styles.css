@@ -35,7 +35,8 @@ body {
 /* navbar styles */
 nav {
     border: 2px solid black;
-    position: relative;
+    background-color: rgb(236, 236, 236);
+    position: fixed;
     left: 5px;
 }
 
