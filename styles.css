@@ -8,9 +8,16 @@
   }
 }
 
+/* moves navbar to center screen on mobile */
 @media (max-width: 500px) {
   #navbar {
-    width: 358px;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    top: 0px;
+  }
+  body {
+    color: red;
   }
 }
 
@@ -63,16 +70,16 @@ main {
 }
 
 #spaced-list {
-    line-height: 2em;
+  line-height: 2em;
 }
 
-code {
+.code-box {
   background-color: rgb(197, 202, 212);
   border: 1px solid rgb(156, 155, 155);
   padding: 10px 5px;
   margin: 10px;
   border-radius: 5px;
-  
+  width: 50vw;
 }
 
 #footer {

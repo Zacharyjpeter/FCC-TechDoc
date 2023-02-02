@@ -54,8 +54,7 @@
           as screen resolution or browser viewport width. Media queries are used
           for the following:
         </p>
-        <p>
-          <ul id="spaced-list">
+        <ul id="spaced-list">
           <li>
             To conditionally apply styles with the CSS @media and @import
             at-rules.
@@ -68,8 +67,7 @@
             To test and monitor media states using the Window.matchMedia() and
             MediaQueryList.addListener() JavaScript methods.
           </li>
-          </ul>
-        </p>
+        </ul>
       </section>
       <section class="main-section" id="header2">
         <h1>Syntax</h1>
@@ -78,8 +76,7 @@
           media feature expressions, which may optionally be combined in various
           ways using logical operators. Media queries are case-insensitive.
         </p>
-        <p>
-          <ul id="spaced-list">
+        <ul id="spaced-list">
           <li>
             Media types define the broad category of device for which the media
             query applies: all, print, screen. The type is optional (assumed to
@@ -101,8 +98,7 @@
             and, and only. You can also combine multiple media queries into a
             single rule by separating them with commas.
           </li>
-          </ul>
-        </p>
+        </ul>
         <p>
           A media query computes to true when the media type (if specified)
           matches the device on which a document is being displayed and all
@@ -118,12 +114,16 @@
           create styles that target special devices such as printers or
           audio-based screen readers. For example, this CSS targets printers:
         </p>
-        <code>@media print { /* … */ } </code>
+        <div class="code-box">
+          <code>@media print { /* … */ } </code>
+        </div>
         <p>
           You can also target multiple devices. For instance, this @media rule
           uses two media queries to target both screen and print devices:
         </p>
-        <code>@media screen, print { /* … */ } </code>
+        <div class="code-box">
+          <code>@media screen, print { /* … */ } </code>
+        </div>
         <p>
           See media type for a list of all media types. Because they describe
           devices in only very broad terms, just a few are available; to target
@@ -140,7 +140,9 @@
           applies styles when the user's primary input mechanism (such as a
           mouse) can hover over elements:
         </p>
-        <code>@media (hover: hover) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (hover: hover) { /* … */ } </code>
+        </div>
         <p>
           Many media features are range features, which means they can be
           prefixed with "min-" or "max-" to express "minimum condition" or
@@ -148,14 +150,16 @@
           styles only if your browser's viewport width is equal to or narrower
           than 1250px:
         </p>
-        <code>@media (max-width: 1250px) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (max-width: 1250px) { /* … */ } </code>
+        </div>
         <p>
           If you create a media feature query without specifying a value, the
           nested styles will be used as long as the feature's value is not zero
           (or none, in Level 4). For example, this CSS will apply to any device
           with a color screen:
         </p>
-        <code>@media (color) { /* … */ } </code>
+        <div class="code-box"><code>@media (color) { /* … */ } </code></div>
         <p>
           If a feature doesn't apply to the device on which the browser is
           running, expressions involving that media feature are always false.
@@ -186,17 +190,21 @@
           media features. This example combines two media features to restrict
           styles to landscape-oriented devices with a width of at least 30 ems:
         </p>
-        <code
-          >@media (min-width: 30em) and (orientation: landscape) { /* … */ }
-        </code>
+        <div class="code-box">
+          <code
+            >@media (min-width: 30em) and (orientation: landscape) { /* … */ }
+          </code>
+        </div>
         <p>
           To limit the styles to devices with a screen, you can chain the media
           features to the screen media type:
         </p>
-        <code
-          >@media screen and (min-width: 30em) and (orientation: landscape) { /*
-          … */ }
-        </code>
+        <div class="code-box">
+          <code
+            >@media screen and (min-width: 30em) and (orientation: landscape) {
+            /* … */ }
+          </code>
+        </div>
         <h2>Testing for multiple queries</h2>
         <p>
           You can use a comma-separated list to apply styles when the user's
@@ -205,10 +213,12 @@
           device has either a minimum height of 680px or is a screen device in
           portrait mode:
         </p>
-        <code
-          >@media (min-height: 680px), screen and (orientation: portrait) { /* …
-          */ }
-        </code>
+        <div class="code-box">
+          <code
+            >@media (min-height: 680px), screen and (orientation: portrait) { /*
+            … */ }
+          </code>
+        </div>
         <p>
           Taking the above example, if the user had a printer with a page height
           of 800px, the media statement would return true because the first
@@ -225,9 +235,13 @@
           feature query, only an entire media query. The not is evaluated last
           in the following query:
         </p>
-        <code>@media not all and (monochrome) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media not all and (monochrome) { /* … */ } </code>
+        </div>
         <p>This means that the above query is evaluated like this:</p>
-        <code>@media not (all and (monochrome)) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media not (all and (monochrome)) { /* … */ } </code>
+        </div>
         <h2>Improving compatability with older browsers</h2>
         <p>
           The only keyword prevents older browsers that do not support media
@@ -244,16 +258,26 @@
           context for writing such queries. For example, using the max-
           functionality for width we might write the following:
         </p>
-        <code>@media (max-width: 30em) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (max-width: 30em) { /* … */ } </code>
+        </div>
         <p>In Media Queries Level 4 this can be written as:</p>
-        <code>@media (max-width: 30em) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (max-width: 30em) { /* … */ } </code>
+        </div>
         <p>
           Using min- and max- we might test for a width between two values like
           so:
         </p>
-        <code>@media (min-width: 30em) and (max-width: 50em) { /* … */ } </code>
+        <div class="code-box">
+          <code
+            >@media (min-width: 30em) and (max-width: 50em) { /* … */ }
+          </code>
+        </div>
         <p>This would convert to the Level 4 syntax as:</p>
-        <code>@media (30em <= width <= 50em) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (30em <= width <= 50em) { /* … */ } </code>
+        </div>
         <p>
           Media Queries Level 4 also adds ways to combine media queries using
           full boolean algebra with and, not, and or.
@@ -264,7 +288,9 @@
           For example, not(hover) would match if the device had no hover
           capability:
         </p>
-        <code>@media (not(hover)) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (not(hover)) { /* … */ } </code>
+        </div>
         <h2>Testing for multiple features or</h2>
         <p>
           You can use or to test for a match among more than one feature,
@@ -272,7 +298,9 @@
           following query tests for devices that have a monochrome display or
           hover capability:
         </p>
-        <code>@media (not (color)) or (hover) { /* … */ } </code>
+        <div class="code-box">
+          <code>@media (not (color)) or (hover) { /* … */ } </code>
+        </div>
       </section>
       <section id="footer">
         All content on this page is sourced from
